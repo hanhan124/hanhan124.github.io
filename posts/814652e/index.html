@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Funannotate的docker安装 - Hanのblog</title><meta name="author" content="han">
+<meta name="description" content=""><meta name="keywords" content='bioinformatics'>
+  <meta itemprop="name" content="Funannotate的docker安装">
+  <meta itemprop="datePublished" content="2025-02-18T18:54:22+08:00">
+  <meta itemprop="dateModified" content="2025-02-18T18:54:22+08:00">
+  <meta itemprop="wordCount" content="383">
+  <meta itemprop="keywords" content="Bioinformatics"><meta property="og:url" content="http://localhost:1313/posts/814652e/">
+  <meta property="og:site_name" content="Hanのblog">
+  <meta property="og:title" content="Funannotate的docker安装">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-18T18:54:22+08:00">
+    <meta property="article:modified_time" content="2025-02-18T18:54:22+08:00">
+    <meta property="article:tag" content="Bioinformatics">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Funannotate的docker安装">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/814652e/" title="Funannotate的docker安装 - Hanのblog" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/10efd1f/" title="Hugo 自动化部署到 GitHub Pages 详细指南" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Funannotate的docker安装",
+    "inLanguage": "en-us",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/814652e\/"
+    },"genre": "posts","keywords": "bioinformatics","wordcount":  383 ,
+    "url": "http:\/\/localhost:1313\/posts\/814652e\/","datePublished": "2025-02-18T18:54:22+08:00","dateModified": "2025-02-18T18:54:22+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "han"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Hanのblog"><span class="header-title-text">Hanのblog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Hanのblog"><span class="header-title-text">Hanのblog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Funannotate的docker安装</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      han</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/bioinformatics/" class="post-category" title="分类 - Bioinformatics"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Bioinformatics</a></span></div><div class="post-meta-line"><span title="发布于 2025-02-18 18:54:22"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-02-18">2025-02-18</time></span>&nbsp;<span title="383 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 400 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="content" id="content"><p>Funannotate 是一个基因组预测、注释和比较软件包。它最初是为了注释真菌基因组（大小约为 30 Mb 的真核生物基因组），但随着时间的推移，它已经演变为适用于更大基因组的工具。Funannotate 还是一个轻量级的比较基因组平台。通过 funannotate annotate 命令添加功能注释的基因组可以通过 funannotate compare 脚本运行，该脚本会输出基于 HTML 的整个基因组比较结果。该软件可以进行同源聚类、构建整个基因组的系统发育树、运行基因本体富集分析，以及计算正选择下的同源聚类的 dN/dS 比率。（摘自官方）
+贴上官方教程：Installation — Funannotate 1.8.16 documentation，使用 docker 安装比 conda 方便的多
+1.镜像获取
+因为服务器 docker 版本问题无法直接拉取镜像，因此想尝试直接下载镜像，找到一个工具 dget​（dget: docker hub 直接下载工具 (gitee.com)），下载 linux amd64 ​版本，然后运行：</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>./dget nextgenusfs/funannotate</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为网络问题可能会下载一部分后失败，重新在目标目录运行即可，下载有缓存支持，如果一次出错了，直接再次执行就可以了，全部完成后，得到的是名为 funannotate_latest-img.tar.gz ​的压缩文件。
+同时按照教程，再下载一个执行脚本并赋予 755 权限,，软链接到用户的 ./.local/bin ​目录。</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>wget -O funannotate-docker https://raw.githubusercontent.com/nextgenusfs/funannotate/master/funannotate-docker</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.挂载镜像
+记住你的压缩的位置，docker ​进行加载：</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>docker <span style="color:#007020">load</span> <span style="color:#666">-</span>i <span style="color:#666">./</span>funannotate_latest<span style="color:#666">-</span>img<span style="color:#666">.</span>tar<span style="color:#666">.</span>gz</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用 docker images ​看看是否成功挂载：</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>(test) [test@login ~]$ docker images
+</span></span><span style="display:flex;"><span>REPOSITORY                                            TAG                                    IMAGE ID            CREATED             SIZE
+</span></span><span style="display:flex;"><span>nextgenusfs/funannotate                               latest                                 bcde41375f71        7 weeks ago         12.6 GB</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.运行 funannotate-docker​
+这个时候如果运行 funannotate-docker ​会报错，服务器 docker ​版本太老了。</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>(test) [test@login ~]$ funannotate-docker
+</span></span><span style="display:flex;"><span>unknown flag: --mount
+</span></span><span style="display:flex;"><span>See &#39;docker run --help&#39;.</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解决方法，更改 funannotate-docker ​的源代码为下面这个：</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007020">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#007020"></span>
+</span></span><span style="display:flex;"><span>realpath<span style="color:#666">()</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#bb60d5">OURPWD</span><span style="color:#666">=</span><span style="color:#bb60d5">$PWD</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020">cd</span> <span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>dirname <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$1</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#bb60d5">LINK</span><span style="color:#666">=</span><span style="color:#007020;font-weight:bold">$(</span>readlink <span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>basename <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$1</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">while</span> <span style="color:#666">[</span> <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$LINK</span><span style="color:#4070a0">&#34;</span> <span style="color:#666">]</span>; <span style="color:#007020;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020">cd</span> <span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>dirname <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$LINK</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#bb60d5">LINK</span><span style="color:#666">=</span><span style="color:#007020;font-weight:bold">$(</span>readlink <span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>basename <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$1</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">done</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#bb60d5">REALPATH</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$PWD</span><span style="color:#4070a0">/</span><span style="color:#007020;font-weight:bold">$(</span>basename <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$1</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020">cd</span> <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$OURPWD</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$REALPATH</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#bb60d5">USER</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>id -u <span style="color:#007020;font-weight:bold">$(</span>logname<span style="color:#007020;font-weight:bold">))</span><span style="color:#4070a0">:</span><span style="color:#007020;font-weight:bold">$(</span>id -g <span style="color:#007020;font-weight:bold">$(</span>logname<span style="color:#007020;font-weight:bold">))</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#bb60d5">WORKDIR</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>realpath .<span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#bb60d5">MOUNT</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;-v </span><span style="color:#70a0d0">${</span><span style="color:#bb60d5">WORKDIR</span><span style="color:#70a0d0">}</span><span style="color:#4070a0">:</span><span style="color:#70a0d0">${</span><span style="color:#bb60d5">WORKDIR</span><span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#bb60d5">TZ</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;</span><span style="color:#007020;font-weight:bold">$(</span>date +<span style="color:#4070a0">&#39;%Z&#39;</span><span style="color:#007020;font-weight:bold">)</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run --rm -it <span style="color:#4070a0;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4070a0;font-weight:bold"></span>  --user <span style="color:#4070a0">&#34;</span><span style="color:#70a0d0">${</span><span style="color:#bb60d5">USER</span><span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span> <span style="color:#4070a0;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4070a0;font-weight:bold"></span>  -e <span style="color:#bb60d5">TZ</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;</span><span style="color:#70a0d0">${</span><span style="color:#bb60d5">TZ</span><span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span> <span style="color:#4070a0;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4070a0;font-weight:bold"></span>  --workdir <span style="color:#4070a0">&#34;</span><span style="color:#70a0d0">${</span><span style="color:#bb60d5">WORKDIR</span><span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span> <span style="color:#4070a0;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4070a0;font-weight:bold"></span>  <span style="color:#70a0d0">${</span><span style="color:#bb60d5">MOUNT</span><span style="color:#70a0d0">}</span> <span style="color:#4070a0;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4070a0;font-weight:bold"></span>  nextgenusfs/funannotate:latest funannotate <span style="color:#4070a0">&#34;</span><span style="color:#bb60d5">$@</span><span style="color:#4070a0">&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在试试，成功 (▔▽▔)/</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>(test) [test<span style="">@</span>login <span style="color:#666">~</span>]<span style="color:#666">$</span> funannotate<span style="color:#666">-</span>docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:       funannotate <span style="color:#666">&lt;</span>command<span style="color:#666">&gt;</span> <span style="color:#666">&lt;</span>arguments<span style="color:#666">&gt;</span>
+</span></span><span style="display:flex;"><span>version:     <span style="color:#40a070">1.8</span><span style="color:#666">.</span><span style="color:#40a070">17</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Description: Funannotate is a genome prediction, annotation, <span style="color:#007020;font-weight:bold">and</span> comparison pipeline<span style="color:#666">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Commands:
+</span></span><span style="display:flex;"><span>  clean       Find<span style="color:#666">/</span>remove small repetitive contigs
+</span></span><span style="display:flex;"><span>  sort        Sort by size <span style="color:#007020;font-weight:bold">and</span> rename contig headers
+</span></span><span style="display:flex;"><span>  mask        Repeatmask genome assembly
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  train       RNA<span style="color:#666">-</span>seq mediated training of Augustus<span style="color:#666">/</span>GeneMark
+</span></span><span style="display:flex;"><span>  predict     Run gene prediction pipeline
+</span></span><span style="display:flex;"><span>  fix         Fix annotation errors (generate new GenBank file)
+</span></span><span style="display:flex;"><span>  update      RNA<span style="color:#666">-</span>seq<span style="color:#666">/</span>PASA mediated gene model refinement
+</span></span><span style="display:flex;"><span>  remote      Partial functional annotation using remote servers
+</span></span><span style="display:flex;"><span>  iprscan     InterProScan5 search (Docker <span style="color:#007020;font-weight:bold">or</span> local)
+</span></span><span style="display:flex;"><span>  annotate    Assign functional annotation to gene predictions
+</span></span><span style="display:flex;"><span>  compare     Compare funannotated genomes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  util        Format conversion <span style="color:#007020;font-weight:bold">and</span> misc utilities
+</span></span><span style="display:flex;"><span>  setup       Setup<span style="color:#666">/</span>Install databases
+</span></span><span style="display:flex;"><span>  test        Download<span style="color:#666">/</span>Run funannotate installation tests
+</span></span><span style="display:flex;"><span>  check       Check Python, Perl, <span style="color:#007020;font-weight:bold">and</span> External dependencies [<span style="color:#666">--</span>show<span style="color:#666">-</span>versions]
+</span></span><span style="display:flex;"><span>  species     list pre<span style="color:#666">-</span>trained Augustus species
+</span></span><span style="display:flex;"><span>  database    Manage databases
+</span></span><span style="display:flex;"><span>  outgroups   Manage outgroups <span style="color:#007020;font-weight:bold">for</span> funannotate compare
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Written by Jon Palmer (<span style="color:#40a070">2016</span><span style="color:#666">-</span><span style="color:#40a070">2022</span>) nextgenusfs<span style="">@</span>gmail<span style="color:#666">.</span>com with contributions by Jason Stajich jasonstajich<span style="color:#666">.</span>phd<span style="">@</span>gmail<span style="color:#666">.</span>com</span></span></code></pre></td></tr></table>
+</div>
+</div><p>4.测试是否正常
+运行 funannotate-docker test -t predict &ndash;cpus 12 ​看是否能正常运行，若正常会在最后显示：</p>
+<div class="highlight"><div style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#########################################################
+</span></span><span style="display:flex;"><span>SUCCESS: `funannotate predict` test complete.
+</span></span><span style="display:flex;"><span>#########################################################</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2025-02-18 18:54:22">更新于 2025-02-18&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/posts/814652e/" data-title="Funannotate的docker安装" data-hashtags="bioinformatics"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/814652e/" data-hashtag="bioinformatics"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/814652e/" data-title="Funannotate的docker安装"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/bioinformatics/" class="post-tag" title="标签 - Bioinformatics">Bioinformatics</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/10efd1f/" class="post-nav-item" rel="prev" title="Hugo 自动化部署到 GitHub Pages 详细指南"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Hugo 自动化部署到 GitHub Pages 详细指南</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.143.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.17-8b402129"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"version":"v0.3.17-8b402129"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>
